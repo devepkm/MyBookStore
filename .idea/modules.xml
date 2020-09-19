@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyBookStore.iml" filepath="$PROJECT_DIR$/MyBookStore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBookStore_P1/MyBookStore_P1.iml" filepath="$PROJECT_DIR$/MyBookStore_P1/MyBookStore_P1.iml" />
+    </modules>
+  </component>
+</project>
