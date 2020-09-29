@@ -7,6 +7,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="MyBookStore_P2" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="commons-dbutils-1.6" module-name="MyBookStore_P2" />
+          <element id="library" level="module" name="JUnit4" module-name="MyBookStore_P2" />
+        </element>
       </element>
     </root>
   </artifact>

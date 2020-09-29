@@ -17,18 +17,18 @@ import java.io.IOException;
  * @Description:
  */
 public class LoginServlet extends HttpServlet {
-    UserService userService = new UserServiceImpl();
+    private UserService userService = new UserServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+
         boolean isLogin = userService.login(new User(username, password));
 
         if (isLogin){
-            req.getRequestDispatcher("/pages/user/login_success.html").forward(req, resp);
+            req.getRequestDispatcher("/page/user/login_success.html").forward(req, resp);
         } else {
-            System.out.println("wrong info");
             dispatchBack(req, resp);
         }
 
@@ -36,6 +36,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     private void dispatchBack(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/pages/user/login.html").forward(req, resp);
+        req.getRequestDispatcher("page/user/login.html").forward(req, resp);
     }
 }

@@ -11,7 +11,7 @@ import com.devepkm.service.UserService;
  * @Description:
  */
 public class UserServiceImpl implements UserService {
-    UserDao userDao = new UserDaoImpl();
+    private UserDao userDao = new UserDaoImpl();
 
     @Override
     public boolean signUp(User u) {
@@ -21,12 +21,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean login(User u) {
         User t = userDao.verifyUser(u.getUsername(), u.getPassword());
-        return t == null ? false : true;
+        return t != null;
     }
 
     @Override
     public boolean isUsernameExits(String username) {
         User t = userDao.queryUserByUsername(username);
-        return t == null ? false : true;
+        return t != null;
     }
 }

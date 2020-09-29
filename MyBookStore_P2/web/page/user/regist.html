@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css">
-    <script type="text/javascript" src="../../static/script/jquery-1.7.2.js"></script>
-    <script type="text/javascript" src="../../static/script/sign_up.js"></script>
+    <base href="http://localhost:8080/MyBookStore_P2/">
+
+
+    <link type="text/css" rel="stylesheet" href="static/css/style.css">
+    <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="static/script/sign_up.js"></script>
     <style type="text/css">
         .login_form {
             height: 420px;
@@ -33,7 +36,7 @@
                     <span class="errorMsg"></span>
                 </div>
                 <div class="form">
-                    <form action="regist_success.html">
+                    <form action="signUpServlet" method="post">
                         <label>Username：</label>
                         <input class="itxt" type="text" placeholder="Username" autocomplete="off" tabindex="1"
                                name="username" id="username"/>
@@ -56,7 +59,7 @@
                         <br/>
                         <br/>
                         <label>Code：</label>
-                        <input class="itxt" type="text" style="width: 150px;" id="code"/>
+                        <input class="itxt" type="text" style="width: 150px;" name="code" id="code"/>
                         <img alt="" src="../../static/img/code.bmp" style="float: right; margin-right: 40px">
                         <br/>
                         <br/>

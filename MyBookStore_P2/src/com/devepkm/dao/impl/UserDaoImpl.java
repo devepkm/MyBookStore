@@ -28,6 +28,6 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     public boolean saveUser(User u) {
         String sql = "insert into user(username, password, email) values(?,?,?)";
         int rsCount = update(sql, u.getUsername(), u.getPassword(), u.getEmail());
-        return rsCount == 0 ? false : true;
+        return rsCount != 0;
     }
 }
