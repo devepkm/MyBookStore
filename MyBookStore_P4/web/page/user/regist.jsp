@@ -4,21 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <%
-        String baseUrl = request.getScheme()
-                + "://"
-                + request.getServerName()
-                + ":"
-                + request.getServerPort()
-                + request.getContextPath()
-                + "/";
-    %>
-    <%--    <base href="http://localhost:8080/MyBookStore_P4/">--%>
-    <%--    change the static base to dynamic base--%>
-    <base href="<%=baseUrl%>">
+    <%@include file="/page/common/header.jsp" %>
 
-    <link type="text/css" rel="stylesheet" href="static/css/style.css">
-    <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
     <script type="text/javascript" src="static/script/sign_up.js"></script>
     <style type="text/css">
         .login_form {
@@ -92,10 +79,7 @@
         </div>
     </div>
 </div>
-<div id="bottom">
-			<span>
-				Devepkm Copyright &copy;2020
-			</span>
-</div>
+<%@include file="/page/common/footer.jsp" %>
+
 </body>
 </html>

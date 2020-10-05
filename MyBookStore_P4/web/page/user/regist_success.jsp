@@ -4,21 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>尚硅谷会员注册页面</title>
+    <%@include file="/page/common/header.jsp" %>
 
-    <%
-        String baseUrl = request.getScheme()
-                + "://"
-                + request.getServerName()
-                + ":"
-                + request.getServerPort()
-                + request.getContextPath()
-                + "/";
-    %>
-    <%--    <base href="http://localhost:8080/MyBookStore_P4/">--%>
-    <%--    change the static base to dynamic base--%>
-    <base href="<%=baseUrl%>">
-
-    <link type="text/css" rel="stylesheet" href="static/css/style.css">
     <style type="text/css">
         h1 {
             text-align: center;
@@ -44,14 +31,11 @@
 
 <div id="main">
 
-    <h1>注册成功! <a href="../../../index.jsp">转到主页</a></h1>
+    <h1>注册成功! <a href="index.jsp">转到主页</a></h1>
 
 </div>
 
-<div id="bottom">
-			<span>
-				尚硅谷书城.Copyright &copy;2015
-			</span>
-</div>
+<%@include file="/page/common/footer.jsp" %>
+
 </body>
 </html>
