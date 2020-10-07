@@ -16,6 +16,15 @@
     <%--    static manager menu--%>
     <%@include file="/page/common/manager_menu.jsp" %>
 
+    <%--    add a js for delete confirmation--%>
+    <script type="text/javascript">
+        $(function () {
+            $("a.delete").click(function () {
+                return confirm("Delete " + $(this).parent().parent().find("td:first").text() + "?");
+            });
+        });
+    </script>
+
 </div>
 
 <div id="main">
@@ -37,8 +46,8 @@
                 <td>${book.author}</td>
                 <td>${book.sales}</td>
                 <td>${book.stock}</td>
-                <td><a href="book_edit.jsp">Edit</a></td>
-                <td><a href="#">Delete</a></td>
+                <td><a href="manager/bookServlet?action=querybook&id=${book.id}">Edit</a></td>
+                <td><a class="delete" href="manager/bookServlet?action=delete&id=${book.id}">Delete</a></td>
             </tr>
 
         </c:forEach>
@@ -51,7 +60,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="book_edit.jsp">Add new a book</a></td>
+            <td><a href="page/manager/book_edit.jsp">Add new a book</a></td>
         </tr>
     </table>
 </div>

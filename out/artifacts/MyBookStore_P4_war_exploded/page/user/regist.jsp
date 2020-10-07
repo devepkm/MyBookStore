@@ -79,10 +79,7 @@
         </div>
     </div>
 </div>
-<div id="bottom">
-			<span>
-				Devepkm Copyright &copy;2020
-			</span>
-</div>
+<%@include file="/page/common/footer.jsp" %>
+
 </body>
 </html>
