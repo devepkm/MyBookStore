@@ -37,12 +37,12 @@
         <input type="hidden" name="id" value=${requestScope.book.id}>
         <table>
             <tr>
-                <td>名称</td>
-                <td>价格</td>
-                <td>作者</td>
-                <td>销量</td>
-                <td>库存</td>
-                <td colspan="2">操作</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Author</td>
+                <td>Sales</td>
+                <td>Stock</td>
+                <td colspan="2">Manipulation</td>
             </tr>
             <tr>
                 <td><input name="name" type="text" value="${requestScope.book.name}"/></td>
@@ -50,7 +50,7 @@
                 <td><input name="author" type="text" value="${requestScope.book.author}"/></td>
                 <td><input name="sales" type="text" value="${requestScope.book.sales}"/></td>
                 <td><input name="stock" type="text" value="${requestScope.book.stock}"/></td>
-                <td><input type="submit" value=${empty requestScope.book ? "Add" : "Edit"}/></td>
+                <td><input type="submit" value=${empty requestScope.book ? "Add" : "Edit"}></td>
             </tr>
         </table>
     </form>
