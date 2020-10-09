@@ -5,6 +5,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -93,5 +94,16 @@ public abstract class BaseDao<T> {
 
     }
 
+
+    public int queryForSigleValue(String sql, Object ... args){
+        Connection conn = JdbcUtils.getConnection();
+        try {
+            return runner.query(conn, sql, new ScalarHandler<Long>(), args).intValue();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return -1;
+    }
 
 }

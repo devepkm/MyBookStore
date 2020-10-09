@@ -7,8 +7,6 @@ import com.devepkm.dao.impl.BookDaoImpl;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @Auther: dev
  * @Date: 1/10/2020 11:58
@@ -49,4 +47,5 @@ public class BookDaoImplTest {
             System.out.println(b);
         }
     }
+
 }

@@ -1,14 +1,13 @@
 package com.devepkm.test;
 
 import com.devepkm.bean.Book;
+import com.devepkm.bean.Page;
 import com.devepkm.service.BookService;
 import com.devepkm.service.impl.BookServiceImpl;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Auther: dev
@@ -50,4 +49,17 @@ public class BookServiceTest {
             System.out.println(b);
         }
     }
+
+    @Test
+    public void getPage() {
+        Page<Book> page = service.getPage(3, 4);
+        List<Book> records = page.getRecords();
+        for (int i = 0; i < records.size(); i++) {
+            System.out.println(records);
+        }
+
+    }
+
+
+
 }

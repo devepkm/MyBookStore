@@ -1,6 +1,7 @@
 package com.devepkm.service;
 
 import com.devepkm.bean.Book;
+import com.devepkm.bean.Page;
 
 import java.util.List;
 
@@ -22,4 +23,5 @@ public interface BookService {
 
     public List<Book> getBookList();
 
+    public Page<Book> getPage(int pageNo, int pageSize);
 }

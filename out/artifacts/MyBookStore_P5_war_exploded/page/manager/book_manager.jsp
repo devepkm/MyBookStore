@@ -38,7 +38,7 @@
             <td colspan="2">Manipulate</td>
         </tr>
 
-        <c:forEach items="${requestScope.booklist}" var="book">
+        <c:forEach items="${requestScope.page.records}" var="book">
 
             <tr>
                 <td>${book.name}</td>
@@ -63,6 +63,18 @@
             <td><a href="page/manager/book_edit.jsp">Add new a book</a></td>
         </tr>
     </table>
+
+    <div id="page_nav">
+        <a href="manager/bookServlet?ation=page">First&nbsp;</a>
+        <a href="#">&lt;&nbsp;</a>
+        <a href="#">3&nbsp;</a>
+        [${requestScope.page.pageNo}]&nbsp;
+        <a href="#">5&nbsp;</a>
+        <a href="#">&gt;&nbsp;</a>
+        <a href="manager/bookServlet?ation=page&pageNo=${requestScope.page.totalPageNo}>Last</a>
+        &nbsp;&nbsp;&nbsp;&nbsp; ${requestScope.page.totalPageNo} Pages, ${requestScope.page.totalRecord}  Records&nbsp;<span>Page&nbsp;<input value="${requestScope.page.pageNo}" name="pn" id="pn_input"/> </span>
+        <input type="button" value="Go">
+    </div>
 </div>
 
 <%@include file="/page/common/footer.jsp" %>

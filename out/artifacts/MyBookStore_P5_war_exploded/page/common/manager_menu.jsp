@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
-    <a href="manager/bookServlet?action=list">Manage Book</a>
+    <a href="manager/bookServlet?action=page">Manage Book</a>
     <a href="page/manager/order_manager.jsp">Manage Order</a>
     <a href="index.jsp">Home</a>
 </div>

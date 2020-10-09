@@ -20,4 +20,10 @@ public interface BookDao {
     public Book queryBookById(Integer id);
 
     public List<Book> getBookList();
+
+    public int queryTotalRecords();
+
+    public List<Book> queryPageRecords(int begin, int pageSize);
+
+
 }

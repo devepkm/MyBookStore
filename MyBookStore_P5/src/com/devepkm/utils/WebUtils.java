@@ -14,10 +14,11 @@ public class WebUtils {
 
 
     /**
-     *  inject paras to bean obj
+     * inject paras to bean obj
+     *
      * @param bean bean empty bean obj
-     * @param map params need to be injected
-     * @param <T> bean obj
+     * @param map  params need to be injected
+     * @param <T>  bean obj
      * @return
      */
     public static <T> T injectBean(T bean, Map map) {
@@ -34,5 +35,15 @@ public class WebUtils {
 
     }
 
+    public static int parseInt(String strInt, int defaultValue) {
+
+        try {
+            return Integer.parseInt(strInt);
+        } catch (Exception e) {
+            return defaultValue;
+        }
+
+
+    }
 
 }

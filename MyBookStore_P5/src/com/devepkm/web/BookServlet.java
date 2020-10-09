@@ -1,6 +1,7 @@
 package com.devepkm.web;
 
 import com.devepkm.bean.Book;
+import com.devepkm.bean.Page;
 import com.devepkm.service.BookService;
 import com.devepkm.service.impl.BookServiceImpl;
 import com.devepkm.utils.WebUtils;
@@ -40,7 +41,7 @@ public class BookServlet extends BaseServlet {
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id = req.getParameter("id");
         service.deleteBookById(Integer.parseInt(id));
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page");
         return;
 
 
@@ -72,6 +73,20 @@ public class BookServlet extends BaseServlet {
         req.setAttribute("book", book);
         req.getRequestDispatcher("/page/manager/book_edit.jsp").forward(req, resp);
         return;
+
+    }
+
+    protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+
+        Page<Book> page = service.getPage(pageNo, pageSize);
+        req.setAttribute("page", page);
+        req.getRequestDispatcher("/page/manager/book_manager.jsp").forward(req, resp);
+        return;
+
+
 
     }
 
