@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>图书管理</title>
     <%@include file="/page/common/header.jsp" %>
+    <%--    <script type="text/javascript" src="static/script/book_manager.js"></script>--%>
 
 </head>
 <body>
@@ -46,8 +47,12 @@
                 <td>${book.author}</td>
                 <td>${book.sales}</td>
                 <td>${book.stock}</td>
-                <td><a href="manager/bookServlet?action=querybook&id=${book.id}">Edit</a></td>
-                <td><a class="delete" href="manager/bookServlet?action=delete&id=${book.id}">Delete</a></td>
+                <td>
+                    <a href="manager/bookServlet?action=querybook&id=${book.id}&pageNo=${requestScope.page.pageNo}">Edit</a>
+                </td>
+                <td><a class="delete"
+                       href="manager/bookServlet?action=delete&id=${book.id}&pageNo=${requestScope.page.pageNo}">Delete</a>
+                </td>
             </tr>
 
         </c:forEach>
@@ -60,21 +65,12 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a href="page/manager/book_edit.jsp">Add new a book</a></td>
+            <td><a href="page/manager/book_edit.jsp?pageNo=${requestScope.page.totalPageNo}">Add new a book</a></td>
         </tr>
     </table>
 
-    <div id="page_nav">
-        <a href="manager/bookServlet?ation=page">First&nbsp;</a>
-        <a href="#">&lt;&nbsp;</a>
-        <a href="#">3&nbsp;</a>
-        [${requestScope.page.pageNo}]&nbsp;
-        <a href="#">5&nbsp;</a>
-        <a href="#">&gt;&nbsp;</a>
-        <a href="manager/bookServlet?ation=page&pageNo=${requestScope.page.totalPageNo}>Last</a>
-        &nbsp;&nbsp;&nbsp;&nbsp; ${requestScope.page.totalPageNo} Pages, ${requestScope.page.totalRecord}  Records&nbsp;<span>Page&nbsp;<input value="${requestScope.page.pageNo}" name="pn" id="pn_input"/> </span>
-        <input type="button" value="Go">
-    </div>
+    <%@ include file="/page/common/nav.jsp" %>
+
 </div>
 
 <%@include file="/page/common/footer.jsp" %>

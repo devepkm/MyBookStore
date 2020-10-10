@@ -35,6 +35,9 @@
         <input type="hidden" name="action" value=${empty requestScope.book ? "add" : "edit"}>
         <%--        sd id to servlet if it is a edit() operation--%>
         <input type="hidden" name="id" value=${requestScope.book.id}>
+        <%--    send pageNo to servlet for redirect after add/ edit    --%>
+        <input type="hidden" name="pageNo" value="${param.pageNo}">
+
         <table>
             <tr>
                 <td>Name</td>

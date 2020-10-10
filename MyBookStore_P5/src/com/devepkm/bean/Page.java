@@ -16,17 +16,21 @@ public class Page<T> {
     private int pageSize = PAGE_SIZE;
     private int totalRecord;
     private List<T> records;
+    private String url;
 
     public Page() {
     }
 
-    public Page(int pageNo, int totalPageNo, int pageSize, int totalRecord, List<T> records) {
+    public Page(int pageNo, int totalPageNo, int pageSize, int totalRecord, List<T> records, String url) {
         this.pageNo = pageNo;
         this.totalPageNo = totalPageNo;
         this.pageSize = pageSize;
         this.totalRecord = totalRecord;
         this.records = records;
+        this.url = url;
     }
+
+
 
     public int getPageSize() {
         return PAGE_SIZE;
@@ -57,6 +61,16 @@ public class Page<T> {
     }
 
     public void setPageNo(int pageNo) {
+        //        set page boundary
+        if (pageNo < 1) {
+            pageNo = 1;
+        }
+
+
+        if (pageNo > totalPageNo) {
+            pageNo = totalPageNo;
+        }
+
         this.pageNo = pageNo;
     }
 
@@ -68,6 +82,14 @@ public class Page<T> {
         this.totalPageNo = totalPageNo;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
         return "Page{" +
@@ -76,6 +98,7 @@ public class Page<T> {
                 ", pageSize=" + pageSize +
                 ", totalRecord=" + totalRecord +
                 ", records=" + records +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

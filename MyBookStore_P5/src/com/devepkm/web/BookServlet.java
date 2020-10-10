@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class BookServlet extends BaseServlet {
 
-    BookService service = new BookServiceImpl();
+    private BookService service = new BookServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +31,12 @@ public class BookServlet extends BaseServlet {
         Book book = WebUtils.injectBean(new Book(), req.getParameterMap());
         service.addBook(book);
 //        req.getRequestDispatcher("/manager/bookServlet?action=list").forward(req, resp);
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 0);
+//        pageNo++ to see if a new page is created, if the page is large than the totalPageNO, it will be handle in page() method -> setPageNo()
+        pageNo++;
+
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + pageNo);
         return;
 
 
@@ -41,7 +46,8 @@ public class BookServlet extends BaseServlet {
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String id = req.getParameter("id");
         service.deleteBookById(Integer.parseInt(id));
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page");
+
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
         return;
 
 
@@ -50,7 +56,7 @@ public class BookServlet extends BaseServlet {
     protected void edit(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Book book = WebUtils.injectBean(new Book(), req.getParameterMap());
         service.updateBook(book);
-        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath() + "/manager/bookServlet?action=page&pageNo=" + req.getParameter("pageNo"));
         return;
 
 
@@ -79,11 +85,15 @@ public class BookServlet extends BaseServlet {
     protected void page(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+
         int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
 
         Page<Book> page = service.getPage(pageNo, pageSize);
+        page.setUrl("manager/bookServlet?action=page");
         req.setAttribute("page", page);
+
         req.getRequestDispatcher("/page/manager/book_manager.jsp").forward(req, resp);
+
         return;
 
 

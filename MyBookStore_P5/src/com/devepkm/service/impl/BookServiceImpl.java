@@ -46,17 +46,20 @@ public class BookServiceImpl implements BookService {
     @Override
     public Page<Book> getPage(int pageNo, int pageSize) {
 
+
         Page<Book> page = new Page<>();
-        page.setPageNo(pageNo);
+
         page.setPageSize(pageSize);
         int totalRecords = dao.queryTotalRecords();
         page.setTotalRecord(totalRecords);
-        List<Book> books = dao.queryPageRecords((pageNo - 1) * pageSize, pageSize);
-        page.setRecords(books);
+
         int totalPageNo = (int) Math.ceil((double) totalRecords / pageSize);
         page.setTotalPageNo(totalPageNo);
 
+        page.setPageNo(pageNo);
 
+        List<Book> books = dao.queryPageRecords((page.getPageNo() - 1) * pageSize, pageSize);
+        page.setRecords(books);
         return page;
     }
 }

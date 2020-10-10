@@ -102,6 +102,8 @@ public abstract class BaseDao<T> {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        } finally {
+            JdbcUtils.close(conn);
         }
         return -1;
     }
