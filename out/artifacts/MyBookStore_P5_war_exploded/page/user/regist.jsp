@@ -66,14 +66,26 @@
                         <br/>
                         <br/>
                         <label>Code：</label>
-                        <input class="itxt" type="text" style="width: 150px;" name="code" id="code"/>
-                        <img alt="" src="../../static/img/code.bmp" style="float: right; margin-right: 40px">
+                        <input class="itxt" type="text" style="width: 150px;" name="code" id="code" height="40px"
+                               width="100px"/>
+                        <img id="codeimg" alt="" src="kaptchaServlet.jpg" style="float: right; margin-right: 40px"
+                             height="40px"
+                             width="100px">
                         <br/>
                         <br/>
                         <input type="submit" value="Sign Up" id="sub_btn"/>
 
                     </form>
                 </div>
+                <%--                refresh verification code --%>
+<%--                <script>--%>
+<%--                    $(function (){--%>
+<%--                        $("#codeimg").click(function (){--%>
+<%--                            this.src() = ${basePath}--%>
+<%--                        });--%>
+
+<%--                    });--%>
+<%--                </script>--%>
 
             </div>
         </div>

@@ -1,5 +1,9 @@
 $(function () {
 
+    $("#codeimg").click(function (){
+        this.src = $("base").attr("href") + "kaptchaServlet.jpg";
+    });
+
     $("#sub_btn").click(function () {
         // verify username, password, confirm password, email, verification code
 
@@ -28,25 +32,23 @@ $(function () {
 
         var emailText = $("#email").val();
         var emailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!emailPatt.test(emailText)){
+        if (!emailPatt.test(emailText)) {
             $("span.errorMsg").text("Invalid Email! ")
             return false;
         }
 
         // only verify if verification code is not null
         var codeText = $("#code").val();
-        if (codeText == ""){
+        if (codeText == "") {
             $("span.errorMsg").text("Invalid Verification Code! ")
             return false;
         }
 
 
-
-
-
-
-            //clean all error msg
-            $("span.errorMsg").text("")
+        //clean all error msg
+        $("span.errorMsg").text("")
 
     });
 });
+
+

@@ -9,7 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
 /**
  * @Auther: dev
@@ -44,7 +47,6 @@ public class UserServlet extends BaseServlet {
         }
 
 
-
     }
 
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -60,12 +62,19 @@ public class UserServlet extends BaseServlet {
 //        String username = req.getParameter("username");
 //        String password = req.getParameter("password");
 //        String email = req.getParameter("email");
-        String code = req.getParameter("code");
+
 
         User u = WebUtils.injectBean(new User(), req.getParameterMap());
 
-//        set code to abcd as right (since no backend has impled.)
-        if ("abcd".equalsIgnoreCase(code)) {
+//        get userinputes code
+        String code = req.getParameter("code");
+
+//          verify verification code
+        HttpSession session = req.getSession();
+        String token = (String) session.getAttribute(KAPTCHA_SESSION_KEY);
+        session.invalidate();
+
+        if (token != null && token.equalsIgnoreCase(code)) {
 
             if (!userService.isUsernameExits(u.getUsername())) {
                 userService.signUp(u);
