@@ -54,7 +54,7 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 
     @Override
     public List<Book> queryPageRecords(int begin, int pageSize) {
-        String sql = "SELECT * FROM book limit ? and ?";
+        String sql = "SELECT * FROM book limit ? , ?";
         return queryForList(sql, begin, pageSize);
     }
 

@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <title>书城首页</title>
 
-    <%-- 静态包含 base标签、css样式、jQuery文件 --%>
-    <%@ include file="/page/common/header.jsp" %>
+    <%@include file="/page/common/header.jsp" %>
+
 
 
 </head>
@@ -17,19 +17,20 @@
     <img class="logo_img" alt="" src="static/img/logo.gif">
     <span class="wel_word">网上书城</span>
     <div>
-        <a href="pages/user/login.jsp">登录</a> |
-        <a href="pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
-        <a href="pages/cart/cart.jsp">购物车</a>
-        <a href="pages/manager/manager.jsp">后台管理</a>
+        <a href="page/user/login.jsp">登录</a> |
+        <a href="page/user/regist.jsp">注册</a> &nbsp;&nbsp;
+        <a href="page/cart/cart.jsp">购物车</a>
+        <a href="page/manager/manager.jsp">后台管理</a>
     </div>
 </div>
 
 <div id="main">
     <div id="book">
         <div class="book_cond">
-            <form action="" method="get">
-                价格：<input id="min" type="text" name="min" value=""> 元 -
-                <input id="max" type="text" name="max" value=""> 元
+            <form action="client/bookServlet" method="get">
+                <input type="hidden" name="action" value="priceSearch">
+                价格：<input id="min" type="text" name="min" value="${param.min}"> 元 -
+                <input id="max" type="text" name="max" value="${param.max}"> 元
                 <input type="submit" value="查询"/>
             </form>
         </div>
@@ -79,8 +80,8 @@
 
 </div>
 
-<%--静态包含页脚内容--%>
 <%@include file="/page/common/footer.jsp" %>
+
 
 </body>
 </html>

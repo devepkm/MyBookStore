@@ -48,7 +48,7 @@ public class ClientBookServlet extends BaseServlet {
         int max = WebUtils.parseInt(req.getParameter("max"), Integer.MAX_VALUE);
 
         Page<Book> page = service.getPriceSearchPage(pageNo, pageSize, min, max);
-        page.setUrl("client/bookServlet?action=priceSearch");
+        page.setUrl("client/bookServlet?action=priceSearch&min=" + min + "&max=" + max);
         req.setAttribute("page", page);
         req.getRequestDispatcher("/page/client/index.jsp").forward(req, resp);
         return;
