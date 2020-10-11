@@ -22,10 +22,7 @@ public class BookServlet extends BaseServlet {
 
     private BookService service = new BookServiceImpl();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
-    }
+
 
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws InvocationTargetException, IllegalAccessException, ServletException, IOException {
         Book book = WebUtils.injectBean(new Book(), req.getParameterMap());

@@ -9,19 +9,30 @@
     <%@include file="/page/common/header.jsp" %>
 
 
-
 </head>
 <body>
 
 <div id="header">
     <img class="logo_img" alt="" src="static/img/logo.gif">
     <span class="wel_word">网上书城</span>
-    <div>
-        <a href="page/user/login.jsp">登录</a> |
-        <a href="page/user/regist.jsp">注册</a> &nbsp;&nbsp;
-        <a href="page/cart/cart.jsp">购物车</a>
-        <a href="page/manager/manager.jsp">后台管理</a>
-    </div>
+    <c:if test="${empty sessionScope.user}">
+
+        <div>
+            <a href="page/user/login.jsp">Login</a> &nbsp;
+            <a href="page/user/regist.jsp">Sign Up</a> &nbsp;
+            <a href="page/cart/cart.jsp">Cart</a> &nbsp;&nbsp;
+            <a href="page/manager/manager.jsp">Management</a>
+        </div>
+
+    </c:if>
+
+    <c:if test="${not empty sessionScope.user}">
+
+        <%@include file="/page/common/login_success_menu.jsp" %>
+
+
+    </c:if>
+
 </div>
 
 <div id="main">
@@ -29,9 +40,9 @@
         <div class="book_cond">
             <form action="client/bookServlet" method="get">
                 <input type="hidden" name="action" value="priceSearch">
-                价格：<input id="min" type="text" name="min" value="${param.min}"> 元 -
-                <input id="max" type="text" name="max" value="${param.max}"> 元
-                <input type="submit" value="查询"/>
+                Price：<input id="min" type="text" name="min" value="${param.min}"> -
+                <input id="max" type="text" name="max" value="${param.max}">
+                <input type="submit" value="Search"/>
             </form>
         </div>
         <div style="text-align: center">

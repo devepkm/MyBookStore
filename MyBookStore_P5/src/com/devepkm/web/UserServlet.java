@@ -6,6 +6,7 @@ import com.devepkm.service.impl.UserServiceImpl;
 import com.devepkm.utils.WebUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -29,6 +30,9 @@ public class UserServlet extends BaseServlet {
         boolean isLogin = userService.login(u);
 
         if (isLogin) {
+            Cookie cookie = new Cookie("username", u.getUsername());
+            resp.addCookie(cookie);
+            req.getSession().setAttribute("user", u);
             req.getRequestDispatcher("/page/user/login_success.jsp").forward(req, resp);
             return;
         } else {
@@ -40,6 +44,13 @@ public class UserServlet extends BaseServlet {
         }
 
 
+
+    }
+
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().invalidate();
+        resp.sendRedirect(req.getContextPath());
+        return;
 
     }
 

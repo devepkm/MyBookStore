@@ -27,23 +27,23 @@
                 </div>
                 <div class="msg_cont">
                     <b></b>
-                    <span class="errorMsg"><%=request.getAttribute("errMsg") == null ? "请输入用户名和密码" : request.getAttribute("errMsg")%></span>
+                    <span class="errorMsg"><%=request.getAttribute("errMsg") == null ? "Plase Enter Username and Password" : request.getAttribute("errMsg")%></span>
                 </div>
                 <div class="form">
                     <form action="userServlet" method="post">
                         <%--                        for UserServlet to determinate which method to call--%>
                         <input type="hidden" name="action" value="login">
-                        <label>用户名称：</label>
-                        <input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off" tabindex="1"
+                        <label>Username: </label>
+                        <input class="itxt" type="text" value="${cookie.username.value}" autocomplete="off" tabindex="1"
                                name="username"/>
                         <br/>
                         <br/>
-                        <label>用户密码：</label>
-                        <input class="itxt" type="password" placeholder="请输入密码" autocomplete="off" tabindex="1"
+                        <label>Password: </label>
+                        <input class="itxt" type="password"  autocomplete="off" tabindex="1"
                                name="password"/>
                         <br/>
                         <br/>
-                        <input type="submit" value="登录" id="sub_btn"/>
+                        <input type="submit" value="Login" id="sub_btn"/>
                     </form>
                 </div>
 
