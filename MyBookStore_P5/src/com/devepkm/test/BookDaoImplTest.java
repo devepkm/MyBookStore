@@ -48,4 +48,20 @@ public class BookDaoImplTest {
         }
     }
 
+    @org.junit.Test
+    public void queryPriceSearchTotalRecords() {
+        int i = dao.queryPriceSearchTotalRecords(10, 20);
+        System.out.println(i);
+    }
+
+
+    @org.junit.Test
+    public void queryPriceSearchRecords() {
+        List<Book> books = dao.queryPriceSearchRecords(1, 2, 10, 20);
+        for (int i = 0; i < books.size(); i++) {
+            Book book = books.get(i);
+            System.out.println(book);
+        }
+    }
+
 }

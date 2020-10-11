@@ -16,7 +16,7 @@ import java.io.IOException;
  * @Date: 10/10/2020 17:41
  * @Description:
  */
-public class ClientBookServlet extends BaseServlet{
+public class ClientBookServlet extends BaseServlet {
 
     private BookService service = new BookServiceImpl();
 
@@ -37,6 +37,22 @@ public class ClientBookServlet extends BaseServlet{
         return;
 
 
-
     }
+
+
+    protected void priceSearch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        int pageNo = WebUtils.parseInt(req.getParameter("pageNo"), 1);
+        int pageSize = WebUtils.parseInt(req.getParameter("pageSize"), Page.PAGE_SIZE);
+        int min = WebUtils.parseInt(req.getParameter("min"), 0);
+        int max = WebUtils.parseInt(req.getParameter("max"), Integer.MAX_VALUE);
+
+        Page<Book> page = service.getPriceSearchPage(pageNo, pageSize, min, max);
+        page.setUrl("client/bookServlet?action=priceSearch");
+        req.setAttribute("page", page);
+        req.getRequestDispatcher("/page/client/index.jsp").forward(req, resp);
+        return;
+    }
+
+
 }

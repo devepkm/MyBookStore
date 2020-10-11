@@ -24,4 +24,7 @@ public interface BookService {
     public List<Book> getBookList();
 
     public Page<Book> getPage(int pageNo, int pageSize);
+
+
+    Page<Book> getPriceSearchPage(int pageNo, int pageSize, int min, int max);
 }

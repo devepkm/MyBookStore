@@ -26,4 +26,8 @@ public interface BookDao {
     public List<Book> queryPageRecords(int begin, int pageSize);
 
 
+    public List<Book> queryPriceSearchRecords(int i, int pageSize, int min, int max);
+
+
+    public int queryPriceSearchTotalRecords(int min, int max);
 }

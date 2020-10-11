@@ -14,7 +14,7 @@ import java.util.List;
 public class BookDaoImpl extends BaseDao<Book> implements BookDao {
     @Override
     public int addBook(Book book) {
-        String sql = "insert into book(`name` , `author` , `price` , `sales` , `stock` , `img_path`) values (?,?,?,?,?,?) ";
+        String sql = "INSERT into book(`name` , `author` , `price` , `sales` , `stock` , `img_path`) values (?,?,?,?,?,?) ";
         return update(sql, book.getName(), book.getAuthor(), book.getPrice(), book.getSales(), book.getStock(), book.getImgPath());
 
     }
@@ -28,33 +28,46 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
     @Override
     public int updateBook(Book book) {
 
-        String sql = "update book set `name` = ? , `author` = ? , `price` = ? , `sales` = ? , `stock` = ? , `img_path` = ? where `id` = ?";
+        String sql = "UPDATE book set `name` = ? , `author` = ? , `price` = ? , `sales` = ? , `stock` = ? , `img_path` = ? WHERE `id` = ?";
         return update(sql, book.getName(), book.getAuthor(), book.getPrice(), book.getSales(), book.getStock(), book.getImgPath(), book.getId());
     }
 
     @Override
     public Book queryBookById(Integer id) {
-        String sql = "select `id`, `name` , `author` , `price` , `sales` , `stock` , `img_path` imgPath from book where `id` = ?";
+        String sql = "SELECT `id`, `name` , `author` , `price` , `sales` , `stock` , `img_path` imgPath FROM book WHERE `id` = ?";
         return queryForOne(sql, id);
     }
 
     @Override
     public List<Book> getBookList() {
-        String sql = "select * from book";
+        String sql = "SELECT * FROM book";
         return queryForList(sql);
     }
 
     @Override
     public int queryTotalRecords() {
-        String sql = "select count(*) from book";
+        String sql = "SELECT count(*) FROM book";
         return queryForSigleValue(sql, null);
 
     }
 
+
     @Override
     public List<Book> queryPageRecords(int begin, int pageSize) {
-        String sql = "select * from book limit " + begin + " , " + pageSize;
-        return queryForList(sql, null);
+        String sql = "SELECT * FROM book limit ? and ?";
+        return queryForList(sql, begin, pageSize);
+    }
+
+    @Override
+    public List<Book> queryPriceSearchRecords(int begin, int pageSize, int min, int max) {
+        String sql = "SELECT * FROM book ORDER BY Price  WHERE Price  BETWEEN ? and  ? LIMIT ?, ?";
+        return queryForList(sql, min, max, begin, pageSize);
+    }
+
+    @Override
+    public int queryPriceSearchTotalRecords(int min, int max) {
+        String sql = "SELECT count(*) FROM book WHERE Price  BETWEEN ? AND ?";
+        return queryForSigleValue(sql, min, max);
     }
 
 
