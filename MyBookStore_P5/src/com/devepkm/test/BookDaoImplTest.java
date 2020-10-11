@@ -57,7 +57,7 @@ public class BookDaoImplTest {
 
     @org.junit.Test
     public void queryPriceSearchRecords() {
-        List<Book> books = dao.queryPriceSearchRecords(1, 2, 10, 20);
+        List<Book> books = dao.queryPriceSearchRecords(1, 2, 10, 200);
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
             System.out.println(book);

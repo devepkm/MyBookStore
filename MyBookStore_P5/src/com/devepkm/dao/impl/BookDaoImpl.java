@@ -60,7 +60,7 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 
     @Override
     public List<Book> queryPriceSearchRecords(int begin, int pageSize, int min, int max) {
-        String sql = "SELECT * FROM book ORDER BY Price  WHERE Price  BETWEEN ? and  ? LIMIT ?, ?";
+        String sql = "SELECT * FROM book WHERE Price  BETWEEN ? and  ? ORDER BY Price LIMIT ?, ?";
         return queryForList(sql, min, max, begin, pageSize);
     }
 

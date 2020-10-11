@@ -60,6 +60,16 @@ public class BookServiceTest {
 
     }
 
+    @Test
+    public void getPriceSearchPage() {
+        Page<Book> page = service.getPriceSearchPage(1, 4, 10, 20);
+        List<Book> records = page.getRecords();
+        for (Book b : records){
+            System.out.println(b);
+        }
+
+    }
+
 
 
 }
