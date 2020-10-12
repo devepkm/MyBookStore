@@ -37,12 +37,12 @@
         <input type="hidden" name="id" value=${requestScope.book.id}>
         <table>
             <tr>
-                <td>名称</td>
-                <td>价格</td>
-                <td>作者</td>
-                <td>销量</td>
-                <td>库存</td>
-                <td colspan="2">操作</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Author</td>
+                <td>Sales</td>
+                <td>Stock</td>
+                <td colspan="2">Manipulation</td>
             </tr>
             <tr>
                 <td><input name="name" type="text" value="${requestScope.book.name}"/></td>

@@ -10,8 +10,10 @@
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+      <root url="file://$PROJECT_DIR$/MyBookStore_P5/web/WEB-INF/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/MyBookStore_P5/web/WEB-INF/lib" recursive="false" />
   </library>
 </component>
