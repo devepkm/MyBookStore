@@ -1,7 +1,8 @@
 $(function () {
 
+    //refresh verification code
     $("#codeimg").click(function (){
-        this.src = $("base").attr("href") + "kaptchaServlet.jpg";
+        this.src = $("base").attr("href") + "kaptchaServlet.jpg?d=" + new Date();
     });
 
     $("#sub_btn").click(function () {
